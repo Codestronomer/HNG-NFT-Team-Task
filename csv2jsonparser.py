@@ -90,7 +90,7 @@ def add_hash_to_csv():
             new_dict = row
             dict_list.append(new_dict)
 
-    with open("csv/sample.csv", 'w', newline='') as file:
+    with open("csv/sample.output.csv", 'w', newline='') as file:
         fieldlist = [
             'TEAM NAMES', 'Series Number',
             'Filename', 'Name', 'Description',
@@ -104,10 +104,10 @@ def add_hash_to_csv():
                 values.append(v)
             writer.writerow(values)
 
-
-# Driver code
-# if sys.argv[1]:
-    # call the main function if file name is supplied
-    # func(sys.argv[1])
-team_dict = hash_jsonfile()
-add_hash_to_csv()
+# Driver Code
+if __name__ == '__main__':
+    if sys.argv[1]:
+        # call the main function if file name is supplied
+        func(sys.argv[1])
+        team_dict = hash_jsonfile()
+        add_hash_to_csv()
