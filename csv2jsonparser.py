@@ -111,3 +111,5 @@ if __name__ == '__main__':
         func(sys.argv[1])
         team_dict = hash_jsonfile()
         add_hash_to_csv()
+    else:
+        print("<USAGE>: ./csv2jsonparser.py <pathtocsvfile>")
