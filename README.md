@@ -9,28 +9,23 @@
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
+* [Example](#example)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
-<!-- * [License](#license) -->
-
 
 ## General Information
-- Provide general information about your project here.
-- What is the purpose of your project?
-
+- Purpose: Converts NFT data ina csv format to CHIP-0007 Json compatible files 
 
 ## Technologies Used
 - Python - version 3.10
 - Ubuntu - version 20.10
 
-
 ## Features
 List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Converts NFT data in a Csv file to CHIP-0007 json compatible file
+- Hashes the Json file with the sha256 hashing algorithm
+- Saves the hash and the nft data in a csv
 
 
 ## Screenshots
@@ -39,8 +34,6 @@ List the ready features here:
 
 
 ## Setup
-
-
 Install python
 https://www.python.org/downloads/
 Or if you use linux run
@@ -48,6 +41,8 @@ Or if you use linux run
 $ sudo apt-get update
 $ sudo apt-get python3
 ```
+Clone the repository
+```$ git clone https://github.com/codestronomer/HNG-NFT-Team-Task/```
 
 ## Usage
 Run shell script, pass in one argument (path to csv file)
