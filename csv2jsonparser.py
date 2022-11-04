@@ -36,7 +36,7 @@ def func(csvfilepath):
                 nft_dict["attributes"] = []
                 # parse attributes from row
                 kv = parse_attr(
-                    row["Attributes- Hair. Eyes. Teeth. Clothing. Accessories. Expression. Strength. Weakness"])
+                    row["Attributes"])
                 for i in kv:
                     attr_dict = {}
                     if len(i) > 1:
@@ -47,8 +47,10 @@ def func(csvfilepath):
                 nft_dict["collections"]["name"] = "Zuri NFT Tickets for Free Lunch"
                 nft_dict["collections"]["id"] = row["UUID"]
             # add nft to team json file
+            team = row["TEAM NAMES"]
             with open(f"{team}.json", "a", encoding='utf-8') as json_file:
-                json.dump(nft_dict, json_file)
+                if len(nft_dict) > 1:
+                    json.dump(nft_dict, json_file)
 
 
 def parse_attr(strs):
@@ -104,6 +106,7 @@ def add_hash_to_csv():
                 values.append(v)
             writer.writerow(values)
 
+
 # Driver Code
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -113,3 +116,4 @@ if __name__ == '__main__':
         func(sys.argv[1])
         team_dict = hash_jsonfile()
         add_hash_to_csv()
+
