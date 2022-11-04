@@ -41,7 +41,7 @@
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
-## Installation
+## Setup
 Install python if you don't have it installed
 https://www.python.org/downloads/
 or if you're running Ubuntu, In terminal enter
