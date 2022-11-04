@@ -106,10 +106,10 @@ def add_hash_to_csv():
 
 # Driver Code
 if __name__ == '__main__':
-    if sys.argv[1]:
+    if len(sys.argv) < 2:
+        print("Usage: ./csv2jsonparser.py <pathtocsvfile>")
+    elif sys.argv[1]:
         # call the main function if file name is supplied
         func(sys.argv[1])
         team_dict = hash_jsonfile()
         add_hash_to_csv()
-    else:
-        print("<USAGE>: ./csv2jsonparser.py <pathtocsvfile>")
