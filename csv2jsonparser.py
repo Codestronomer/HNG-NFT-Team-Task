@@ -5,6 +5,13 @@ This module converts a csv file to CHIP-0007 JSON representation
 import csv
 import json
 import sys
+import hashlib
+
+
+team_list = ["TEAM AXE", "TEAM AXLE", "TEAM BEVEL", "TEAM BOOT", "TEAM BRAINBOX",
+             "TEAM CHISEL", "TEAM CLUTCH", "TEAM CRANKSHAFT", "TEAM ENGINE", "TEAM GEAR", "TEAM GRIT",
+             "TEAM HEADLIGHT", "TEAM HYDRAULICS", "TEAM PLUG", "TEAM POWERDRILL", "TEAM PRYBAR", "TEAM RULER",
+             "TEAM SANDPAPER", "TEAM SCALE", "TEAM TAPE", "TEAM VBELT"]
 
 
 def func(csvfilepath):
@@ -16,13 +23,13 @@ def func(csvfilepath):
             if row["Filename"] == "":
                 # save team name
                 # create team json file
-                team = row["Series Number"]
+                team = row["TEAM NAMES"]
             else:
                 # fill nft dictionary with details from csvfile rows
                 nft_dict["format"] = "CHIP-0007"
                 nft_dict["name"] = row["Filename"]
                 nft_dict["description"] = row["Description"]
-                nft_dict["minting tool"] = team
+                nft_dict["minting tool"] = row["TEAM NAMES"]
                 nft_dict["sensitive_content"] = False
                 nft_dict["series_number"] = row["Series Number"]
                 nft_dict["series_total"] = 420
@@ -53,7 +60,54 @@ def parse_attr(strs):
     return kv_list
 
 
+def hash_jsonfile():
+    # hash team json files
+    team_dict = {}
+
+    hasher = hashlib.sha256()
+    for team in team_list:
+        with open(f"{team}.json", 'rb') as f:
+            buf = f.read()
+            hasher.update(buf)
+            team_dict[team] = hasher.hexdigest()
+
+    return team_dict
+
+
+def add_hash_to_csv():
+    # Map hash of team json files with to a csv file
+    dict_list = []
+    with open("csv/HNGi9 CSV FILE - Sheet1.csv", 'r') as file:
+
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            if row["TEAM NAMES"] in team_list:
+                new_team = team_dict[row["TEAM NAMES"]]
+                row["HASH"] = team_dict[row["TEAM NAMES"]]
+            else:
+                row["HASH"] = new_team
+            new_dict = row
+            dict_list.append(new_dict)
+
+    with open("csv/sample.csv", 'w', newline='') as file:
+        fieldlist = [
+            'TEAM NAMES', 'Series Number',
+            'Filename', 'Name', 'Description',
+            'Gender', 'Attributes', 'UUID', 'HASH'
+        ]
+        writer = csv.writer(file)
+        writer.writerow(fieldlist)
+        for dicts in dict_list:
+            values = []
+            for k, v in dicts.items():
+                values.append(v)
+            writer.writerow(values)
+
+
 # Driver code
-if sys.argv[1]:
+# if sys.argv[1]:
     # call the main function if file name is supplied
-    func(sys.argv[1])
+    # func(sys.argv[1])
+team_dict = hash_jsonfile()
+add_hash_to_csv()
