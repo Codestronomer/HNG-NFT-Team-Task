@@ -46,10 +46,10 @@ def func(csvfilepath):
                 nft_dict["collections"] = {}
                 nft_dict["collections"]["name"] = "Zuri NFT Tickets for Free Lunch"
                 nft_dict["collections"]["id"] = row["UUID"]
-            # add nft to team json file
-            team = row["TEAM NAMES"]
-            with open(f"{team}.json", "a", encoding='utf-8') as json_file:
-                json.dump(nft_dict, json_file)
+                # add nft to team json file
+                team = row["TEAM NAMES"]
+                with open(f"{team}.json", "a", encoding='utf-8') as json_file:
+                    json.dump(nft_dict, json_file)
 
 
 def parse_attr(strs):
