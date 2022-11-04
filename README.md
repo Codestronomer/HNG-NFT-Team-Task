@@ -5,12 +5,13 @@
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
+* [Tested On](#tested-on)
 * [Features](#features)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
+* [Example](#example)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 <!-- * [License](#license) -->
@@ -57,7 +58,7 @@ Run the python script while passing the relative path to the csv file as argumen
 
 `./csv2jsonparser.py <pathtocsvfile>`
 
-## example
+## Example
 
 ```bash
 ./csv2jsonparser.py "csv/HNGi9 CSV FILE - Sheet1.csv"
