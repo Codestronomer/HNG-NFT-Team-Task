@@ -1,6 +1,6 @@
-# Project Name
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+# NFT CHIP PROJECT
+> Converts data in a CSV file to a CHIP-0007 JSON Representation of it
+> Hashes the JSON file and stores the hashes with the csv data in a new file<!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -17,24 +17,21 @@
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
+- Purpose: To convert NFT details in a CSV file to CHIP-0007 compatible JSON files 
+- Done as a team task for the HNGI9 Internship
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
+- Python - version 3.10
 - Tech 2 - version 2.0
 - Tech 3 - version 3.0
 
 
 ## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Convert data in CSV File to CHIP-0007 compatible JSON files
+- Hash JSOn files with SHA256 Cryptography algorithm
+- Same hashes and NFT data in a csv file
 
 
 ## Screenshots
@@ -42,44 +39,36 @@ List the ready features here:
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
-## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+## Installation
+Install python if you don't have it installed
+https://www.python.org/downloads/
+or if you're running Ubuntu, In terminal enter
+`
+$ sudo apt-get update
+$ sudo apt-get install python3
+`
+Clone Repository
+`$ git clone https://github.com/Codestronomer/HNG-NFT-Team-Task`
 
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
+Run the python script while passing the relative path to the csv file as argument
 
-`write-your-code-here`
+`./csv2jsonparser.py <pathtocsvfile>`
 
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
+Project is: _complete_
 
 
 ## Acknowledgements
 Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
+- This project was inspired by HNG I9 INTERNSHIP
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [John Rumide](https://www.github.com/codestronomer/) - feel free to contact me!
+Email: Johnrumide6@gmail.com
+Twitter: @_codenaut
 
 
 <!-- Optional -->
