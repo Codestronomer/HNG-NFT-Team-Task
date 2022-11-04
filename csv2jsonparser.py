@@ -20,34 +20,33 @@ def func(csvfilepath):
         nftReader = csv.DictReader(csv_file)
         for row in nftReader:
             nft_dict = {}
-            if row["Filename"] == "":
-                # save team name
-                # create team json file
-                team = row["TEAM NAMES"]
-            else:
-                # fill nft dictionary with details from csvfile rows
-                nft_dict["format"] = "CHIP-0007"
-                nft_dict["name"] = row["Filename"]
-                nft_dict["description"] = row["Description"]
-                nft_dict["minting tool"] = row["TEAM NAMES"]
-                nft_dict["sensitive_content"] = False
-                nft_dict["series_number"] = row["Series Number"]
-                nft_dict["series_total"] = 420
-                nft_dict["attributes"] = []
-                # parse attributes from row
-                kv = parse_attr(
-                    row["Attributes"])
-                for i in kv:
-                    attr_dict = {}
-                    if len(i) > 1:
-                        attr_dict["trait_type"] = i[0]
-                        attr_dict["value"] = i[1]
-                        nft_dict["attributes"].append(attr_dict)
-                nft_dict["collections"] = {}
-                nft_dict["collections"]["name"] = "Zuri NFT Tickets for Free Lunch"
-                nft_dict["collections"]["id"] = row["UUID"]
+            # save team name
+            if row['TEAM NAMES'] != "":
+                team = ["TEAM NAMES"]
+            # fill nft dictionary with details from csvfile rows
+            nft_dict["format"] = "CHIP-0007"
+            nft_dict["name"] = row["Filename"]
+            nft_dict["description"] = row["Description"]
+            nft_dict["minting tool"] = row["TEAM NAMES"]
+            nft_dict["sensitive_content"] = False
+            nft_dict["series_number"] = row["Series Number"]
+            nft_dict["series_total"] = 420
+            nft_dict["attributes"] = []
+            # parse attributes from row
+            kv = parse_attr(
+                row["Attributes"])
+            for i in kv:
+                attr_dict = {}
+                if len(i) > 1:
+                    attr_dict["trait_type"] = i[0]
+                    attr_dict["value"] = i[1]
+                    nft_dict["attributes"].append(attr_dict)
+            nft_dict["collections"] = {}
+            nft_dict["collections"]["name"] = "Zuri NFT Tickets for Free Lunch"
+            nft_dict["collections"]["id"] = row["UUID"]
             # add nft to team json file
-            team = row["TEAM NAMES"]
+            if row['TEAM NAMES'] != "" and row['TEAM NAMES'] != team:
+                team = row["TEAM NAMES"]
             with open(f"{team}.json", "a", encoding='utf-8') as json_file:
                 json.dump(nft_dict, json_file)
 
@@ -115,4 +114,3 @@ if __name__ == '__main__':
         func(sys.argv[1])
         team_dict = hash_jsonfile()
         add_hash_to_csv()
-
